@@ -41,7 +41,7 @@ public class PhysicsObject : ColoredObject
         ComputeVelocity();
     }
 
-    void OnEnable()
+    protected void OnEnable()
     {
         rb2D = gameObject.GetComponent<Rigidbody2D>();
     }
