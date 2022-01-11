@@ -55,7 +55,7 @@ public class PlayerController : PhysicsObject
     
     protected override void ComputeVelocity()
     {
-        Debug.Log("move axis " + p_move);
+        //Debug.Log("move axis " + p_move);
         //
         Vector2 move = Vector2.zero;
         //move.x = p_move.x;
