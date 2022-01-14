@@ -7,9 +7,9 @@ using UnityEngine.InputSystem;
 public class ColoredObject : MonoBehaviour
 {
 
-    public enum Colors { BLACK, RED, BLUE, YELLOW, PURPLE, GREEN, ORANGE};
+    //public enum Colors { BLACK, RED, BLUE, YELLOW, PURPLE, GREEN, ORANGE};
 
-    [SerializeField] Colors curColor = Colors.BLACK;
+    [SerializeField] ColorSystem.Colors curColor = ColorSystem.Colors.BLACK;
 
     bool isVisible = true;
 
@@ -22,6 +22,7 @@ public class ColoredObject : MonoBehaviour
     Collider2D thisCollider;
     SpriteRenderer spriteRenderer;
 
+    
     bool isDestructible = false;
 
     // Start is called before the first frame update
@@ -29,7 +30,7 @@ public class ColoredObject : MonoBehaviour
     {
         thisCollider = gameObject.GetComponent<Collider2D>();
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        Awake2();
+        //Awake2();
     }
 
     // Update is called once per frame
@@ -38,12 +39,12 @@ public class ColoredObject : MonoBehaviour
         
     }
 
-    public void ChangeColor(Colors newColor)
+    public void ChangeColor(ColorSystem.Colors newColor)
     {
         curColor = newColor;
     }
 
-    public Colors GetColor()
+    public ColorSystem.Colors GetColor()
     {
         return curColor;
     }
@@ -64,7 +65,7 @@ public class ColoredObject : MonoBehaviour
         thisCollider.enabled = false;
         spriteRenderer.sprite = offSprite;
     }
-
+    /*
     private PlayerControllerInput tempcontrols;
     //TEMP CODE
     private void Awake2()
@@ -89,4 +90,5 @@ public class ColoredObject : MonoBehaviour
             MakeVisible();
         }
     }
+    */
 }

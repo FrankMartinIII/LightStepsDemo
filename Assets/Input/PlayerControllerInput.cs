@@ -41,6 +41,14 @@ public class @PlayerControllerInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""InputColorRotateForward"",
+                    ""type"": ""Button"",
+                    ""id"": ""b8cd7848-000e-4b12-bfae-c28a4929ea8d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -120,6 +128,17 @@ public class @PlayerControllerInput : IInputActionCollection, IDisposable
                     ""action"": ""ChangeColor"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a83be7b0-14f4-422f-b4b4-e5604ca6d9e5"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""InputColorRotateForward"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -131,6 +150,7 @@ public class @PlayerControllerInput : IInputActionCollection, IDisposable
         m_PlayerControls_Jump = m_PlayerControls.FindAction("Jump", throwIfNotFound: true);
         m_PlayerControls_Move = m_PlayerControls.FindAction("Move", throwIfNotFound: true);
         m_PlayerControls_ChangeColor = m_PlayerControls.FindAction("ChangeColor", throwIfNotFound: true);
+        m_PlayerControls_InputColorRotateForward = m_PlayerControls.FindAction("InputColorRotateForward", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -183,6 +203,7 @@ public class @PlayerControllerInput : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerControls_Jump;
     private readonly InputAction m_PlayerControls_Move;
     private readonly InputAction m_PlayerControls_ChangeColor;
+    private readonly InputAction m_PlayerControls_InputColorRotateForward;
     public struct PlayerControlsActions
     {
         private @PlayerControllerInput m_Wrapper;
@@ -190,6 +211,7 @@ public class @PlayerControllerInput : IInputActionCollection, IDisposable
         public InputAction @Jump => m_Wrapper.m_PlayerControls_Jump;
         public InputAction @Move => m_Wrapper.m_PlayerControls_Move;
         public InputAction @ChangeColor => m_Wrapper.m_PlayerControls_ChangeColor;
+        public InputAction @InputColorRotateForward => m_Wrapper.m_PlayerControls_InputColorRotateForward;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -208,6 +230,9 @@ public class @PlayerControllerInput : IInputActionCollection, IDisposable
                 @ChangeColor.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnChangeColor;
                 @ChangeColor.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnChangeColor;
                 @ChangeColor.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnChangeColor;
+                @InputColorRotateForward.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnInputColorRotateForward;
+                @InputColorRotateForward.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnInputColorRotateForward;
+                @InputColorRotateForward.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnInputColorRotateForward;
             }
             m_Wrapper.m_PlayerControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -221,6 +246,9 @@ public class @PlayerControllerInput : IInputActionCollection, IDisposable
                 @ChangeColor.started += instance.OnChangeColor;
                 @ChangeColor.performed += instance.OnChangeColor;
                 @ChangeColor.canceled += instance.OnChangeColor;
+                @InputColorRotateForward.started += instance.OnInputColorRotateForward;
+                @InputColorRotateForward.performed += instance.OnInputColorRotateForward;
+                @InputColorRotateForward.canceled += instance.OnInputColorRotateForward;
             }
         }
     }
@@ -230,5 +258,6 @@ public class @PlayerControllerInput : IInputActionCollection, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
         void OnChangeColor(InputAction.CallbackContext context);
+        void OnInputColorRotateForward(InputAction.CallbackContext context);
     }
 }

@@ -250,6 +250,17 @@ Transform:
   m_Father: {fileID: 2124706534}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &611783435 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5850061767040936796, guid: 006080c49bf74fb469dd1cf0116292c1, type: 3}
+  m_PrefabInstance: {fileID: 5694330780362540654}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 068aaf919355ac74bad8e7e1665edc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &914394452
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,6 +322,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentSegment: {fileID: 1870233823}
   loadedNeighbors: []
+  curColor: 2
 --- !u!4 &1263706103
 Transform:
   m_ObjectHideFlags: 0
@@ -634,6 +646,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1924787292666737249, guid: a6e8156f6c7c26e41bc09f0cfb22a149, type: 3}
+      propertyPath: m_ColliderPaths.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1924787293200783488, guid: a6e8156f6c7c26e41bc09f0cfb22a149, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10.35
@@ -689,6 +705,10 @@ PrefabInstance:
     - target: {fileID: 1924787293200783491, guid: a6e8156f6c7c26e41bc09f0cfb22a149, type: 3}
       propertyPath: m_Name
       value: TestArea1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1924787293200783491, guid: a6e8156f6c7c26e41bc09f0cfb22a149, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6e8156f6c7c26e41bc09f0cfb22a149, type: 3}
@@ -787,11 +807,11 @@ PrefabInstance:
     - target: {fileID: 2173492056089521386, guid: f800fb02d42e8284381f49da5f31b6dd, type: 3}
       propertyPath: myNeighbors.Array.data[0]
       value: 
-      objectReference: {fileID: 5850061767040936796, guid: 006080c49bf74fb469dd1cf0116292c1, type: 3}
+      objectReference: {fileID: 611783435}
     - target: {fileID: 2173492056089521386, guid: f800fb02d42e8284381f49da5f31b6dd, type: 3}
       propertyPath: myNeighbors.Array.data[1]
       value: 
-      objectReference: {fileID: 1924787293200783489, guid: a6e8156f6c7c26e41bc09f0cfb22a149, type: 3}
+      objectReference: {fileID: 2173492054930046228}
     - target: {fileID: 2173492056089521387, guid: f800fb02d42e8284381f49da5f31b6dd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -921,11 +941,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5850061767040936798, guid: 006080c49bf74fb469dd1cf0116292c1, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5850061767575372220, guid: 006080c49bf74fb469dd1cf0116292c1, type: 3}
       propertyPath: m_ColliderPaths.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 006080c49bf74fb469dd1cf0116292c1, type: 3}

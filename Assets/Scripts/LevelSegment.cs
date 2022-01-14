@@ -40,7 +40,35 @@ public class LevelSegment : MonoBehaviour
     {
         return myNeighbors;
     }
+    //Function called by GameManager to change colors of stuff
+    public void toggleObjects(ColorSystem.Colors gmColor)
+    {
+        foreach(ColoredObject colObj in segmentObjects)
+        {
+            if(colObj.GetColor() == ColorSystem.Colors.BLACK)
+            {
+                //DO NOTHING
+            }
+            else if(colObj.GetColor() == gmColor)
+            {
+                colObj.MakeVisible();
+            }
+            else if(colObj.GetColor() != gmColor)
+            {
+                colObj.MakeInvisible();
+            }
+        }
+    }
 
+
+
+
+
+
+
+
+
+    //Functions to detect when Player enters or exits a segment. Will alert GameManager of Player's position.
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.GetComponent<PlayerController>())
