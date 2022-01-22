@@ -14,6 +14,12 @@ public class PlayerController : PhysicsObject
 
 
     Vector2 p_move = Vector2.zero;
+
+
+
+    //Upgrade stuff
+    [SerializeField] bool hasDoubleJump = false;
+    
     
     protected void Awake()
     {
@@ -43,7 +49,13 @@ public class PlayerController : PhysicsObject
     private void HandleJump(InputAction.CallbackContext obj)
     {
         Debug.Log("Jump pressed");
-        velocity.y = jumpTakeOffSpeed;
+
+        if(isGrounded == true || (hasDoubleJump && jumpsPerformed == 0)) //Check if jumping now is valid
+        {
+            velocity.y = jumpTakeOffSpeed;
+            jumpsPerformed += 1;
+        }
+        
     }
 
     private void HandleMove(InputAction.CallbackContext context)

@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour
         {
             Vector3 vec = new Vector3(n.xPos, n.yPos, 0);
             n.gameObject.SetActive(true);
+            n.toggleObjects(curColor); //Set newly loaded segments to the correct color
             loadedNeighbors.Add(n);
             Debug.Log(n.gameObject.name + " loaded");
         }

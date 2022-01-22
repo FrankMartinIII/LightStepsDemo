@@ -16,24 +16,30 @@ public class LevelSegment : MonoBehaviour
     // Change this to some load function later, which will be called by game manager
     void Start()
     {
-        foreach(Transform child in transform)
-        {
-            if (child.GetComponent<ColoredObject>() == null)
-            {
-                Debug.Log("Picked up non ColoredObject");
-                
-            }
-            else
-            {
-                segmentObjects.Add(child.GetComponent<ColoredObject>());
-            }
-        }
+        findColoredObjects();
+        toggleObjects(gameManager.curColor); //On initial load of a segment, needs to set the correct color for itself (because this needs to happen after the LevelSegment is initialized
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    protected void findColoredObjects()
+    {
+        foreach (Transform child in transform)
+        {
+            if (child.GetComponent<ColoredObject>() == null)
+            {
+                Debug.Log("Picked up non ColoredObject");
+
+            }
+            else
+            {
+                segmentObjects.Add(child.GetComponent<ColoredObject>());
+            }
+        }
     }
 
     public List<LevelSegment> getNeighbors()
@@ -43,6 +49,7 @@ public class LevelSegment : MonoBehaviour
     //Function called by GameManager to change colors of stuff
     public void toggleObjects(ColorSystem.Colors gmColor)
     {
+        Debug.Log("toggleObjects to " + gmColor);
         foreach(ColoredObject colObj in segmentObjects)
         {
             if(colObj.GetColor() == ColorSystem.Colors.BLACK)
