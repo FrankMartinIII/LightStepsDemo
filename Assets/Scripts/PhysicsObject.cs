@@ -12,6 +12,7 @@ public class PhysicsObject : ColoredObject
 
     protected Vector2 targetVelocity;
     protected bool isGrounded;
+    protected int jumpsPerformed = 0; //For objects that can double jump
     protected Vector2 groundNormal;
     protected Rigidbody2D rb2D;
     protected Vector2 velocity;
@@ -95,6 +96,7 @@ public class PhysicsObject : ColoredObject
                 if (currentNormal.y > minGroundNormalY)
                 {
                     isGrounded = true;
+                    jumpsPerformed = 0;
                     if (yMovement)
                     {
                         groundNormal = currentNormal;
