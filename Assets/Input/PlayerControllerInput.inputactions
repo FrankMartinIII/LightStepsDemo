@@ -11,7 +11,8 @@
                     "id": "53cc8a2e-df97-43f6-9698-a49172ff2316",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Move",
@@ -19,7 +20,8 @@
                     "id": "bacf0f07-da2a-4917-aeba-97505c140ea0",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "ChangeColor",
@@ -27,7 +29,8 @@
                     "id": "a0501ac0-d446-4a52-9ced-b27afa0d3445",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "InputColorRotateForward",
@@ -35,7 +38,17 @@
                     "id": "b8cd7848-000e-4b12-bfae-c28a4929ea8d",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "InputColorRotateBackward",
+                    "type": "Button",
+                    "id": "17fa846d-8251-4fc6-894f-44d0aadbebb8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -124,6 +137,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "InputColorRotateForward",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5e324db0-2b4f-4f89-8430-98bccfb9d279",
+                    "path": "<Keyboard>/q",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "InputColorRotateBackward",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
