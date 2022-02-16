@@ -60,8 +60,8 @@ public class LevelSegment : MonoBehaviour
     {
         float leftX = transform.position.x + (segBoundary.offset.x - (segBoundary.size.x) / 2) + 5f;
         float rightX = transform.position.x + (segBoundary.offset.x + (segBoundary.size.x) / 2) - 5f;
-        float upY = segBoundary.offset.y + (segBoundary.size.y) - 5;
-        float downY = segBoundary.offset.y - (segBoundary.size.y) + 7;
+        float upY = segBoundary.offset.y + (segBoundary.size.y) ;
+        float downY = segBoundary.offset.y - (segBoundary.size.y) ;
 
         Vector2 upperLeft = new Vector2(leftX, upY);
         Vector2 lowerRight = new Vector2(rightX, downY);

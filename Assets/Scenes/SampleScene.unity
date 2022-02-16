@@ -257,7 +257,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 109816295}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.001, y: 1.2203555, z: 0}
+  m_LocalPosition: {x: 3.143, y: 4.094, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 265356848}
@@ -609,7 +609,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentSegment: {fileID: 1870233823}
   loadedNeighbors: []
-  curColor: 2
+  curColor: 3
   pCam: {fileID: 0}
 --- !u!4 &1263706103
 Transform:
