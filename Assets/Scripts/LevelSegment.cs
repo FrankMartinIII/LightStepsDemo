@@ -27,6 +27,11 @@ public class LevelSegment : MonoBehaviour
         segBoundary = GetComponent<BoxCollider2D>(); //Get this segment's collider
         boundaryCorners = calculateCameraBounds(); //Find the bounds of the segment, only needs to happen once unless we are going to be changing seg sizes dynamically
         //Debug.Log(boundaryCorners[0] + " " + boundaryCorners[1]);
+        //Show where the bounds are
+        Vector3 tempvec1 = new Vector3(boundaryCorners[0].x, boundaryCorners[0].y, 0);
+        Vector3 tempvec2 = new Vector3(boundaryCorners[1].x, boundaryCorners[1].y, 0);
+        Instantiate(Resources.Load("Bound Marker"), tempvec1, Quaternion.identity);
+        Instantiate(Resources.Load("Bound Marker"), tempvec2, Quaternion.identity);
     }
 
     // Update is called once per frame
@@ -53,10 +58,10 @@ public class LevelSegment : MonoBehaviour
 
     protected List<Vector2> calculateCameraBounds()
     {
-        float leftX = transform.position.x + (segBoundary.offset.x - (segBoundary.size.x) / 2) + 5.5f;
-        float rightX = transform.position.x + (segBoundary.offset.x + (segBoundary.size.x) / 2) - 5.5f;
-        float upY = segBoundary.offset.y + (segBoundary.size.y) - 1;
-        float downY = segBoundary.offset.y - (segBoundary.size.y) + 1;
+        float leftX = transform.position.x + (segBoundary.offset.x - (segBoundary.size.x) / 2) + 5f;
+        float rightX = transform.position.x + (segBoundary.offset.x + (segBoundary.size.x) / 2) - 5f;
+        float upY = segBoundary.offset.y + (segBoundary.size.y) - 5;
+        float downY = segBoundary.offset.y - (segBoundary.size.y) + 7;
 
         Vector2 upperLeft = new Vector2(leftX, upY);
         Vector2 lowerRight = new Vector2(rightX, downY);

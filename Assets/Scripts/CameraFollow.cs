@@ -20,13 +20,8 @@ public class CameraFollow : MonoBehaviour
         startPos = transform.position;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
-    void FixedUpdate()
+    void Update()
     {
         
         moveToPosition.z = transform.position.z;
