@@ -12,11 +12,13 @@ public class GameManager : MonoBehaviour
     public ColorSystem.Colors curColor = ColorSystem.Colors.BLUE;
     private PlayerControllerInput tempcontrols;
 
+    public CameraFollow pCam; //Player camera
     // Start is called before the first frame update
     void Start()
     {
         //changeCurrentSegment(currentSegment);
-        
+        pCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>(); //Find the Camera in the scene
+
     }
 
     void Awake()
@@ -35,6 +37,8 @@ public class GameManager : MonoBehaviour
         currentSegment = newSeg;
         unloadPrevNeighbors();
         loadNeighbors(currentSegment);
+        List<Vector2> bounds = currentSegment.getSegCorners(); //Set camera bounds to follow in the new segment
+        pCam.changeCameraBounds(bounds[0], bounds[1]);
 
     }
 
@@ -74,6 +78,8 @@ public class GameManager : MonoBehaviour
         updateSegmentColor();
         tempcontrols.PlayerControls.InputColorRotateForward.performed += colorRotateForward;
         tempcontrols.PlayerControls.InputColorRotateForward.Enable();
+        tempcontrols.PlayerControls.InputColorRotateBackward.performed += colorRotateBackward;
+        tempcontrols.PlayerControls.InputColorRotateBackward.Enable();
     }
 
     private void colorRotateForward(InputAction.CallbackContext ctx)
@@ -87,6 +93,21 @@ public class GameManager : MonoBehaviour
         Debug.Log("CHANGE COLOR " + curColor);
         updateSegmentColor();
     }
+
+    private void colorRotateBackward(InputAction.CallbackContext ctx)
+    {
+        int col = (int)curColor;
+        col = col + 1;
+        if(col > 3) //Yellow (3) is the last color
+        {
+            col = 1; 
+        }
+        //Cast back to a color
+        curColor = (ColorSystem.Colors)col;
+        Debug.Log("CHANGE2 COLOR " + curColor);
+        updateSegmentColor();
+    }
+
 
     private void updateSegmentColor()
     {

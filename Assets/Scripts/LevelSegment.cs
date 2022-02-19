@@ -6,9 +6,14 @@ public class LevelSegment : MonoBehaviour
 {
     [SerializeField] protected List<ColoredObject> segmentObjects = new List<ColoredObject>();
     [SerializeField] protected List<LevelSegment> myNeighbors = new List<LevelSegment>();
+    public float xPos, yPos; //Hold xpos and ypos of segment in the level (maybe use later for resetSegment()?)
     GameManager gameManager;
     [SerializeField] protected bool hasPlayer = false;
-    public float xPos, yPos;
+    //These exist to find the boundaries to fit the camera into the segment
+    BoxCollider2D segBoundary;
+    //public float upperLeftCamBound, lowerRightCamBound;
+    [SerializeField] protected List<Vector2> boundaryCorners; //Holds the boundaries
+
     void Awake()
     {
         gameManager = FindObjectOfType<GameManager>();
@@ -18,6 +23,10 @@ public class LevelSegment : MonoBehaviour
     {
         findColoredObjects();
         toggleObjects(gameManager.curColor); //On initial load of a segment, needs to set the correct color for itself (because this needs to happen after the LevelSegment is initialized
+
+        segBoundary = GetComponent<BoxCollider2D>(); //Get this segment's collider
+        boundaryCorners = calculateCameraBounds(); //Find the bounds of the segment, only needs to happen once unless we are going to be changing seg sizes dynamically
+        //Debug.Log(boundaryCorners[0] + " " + boundaryCorners[1]);
     }
 
     // Update is called once per frame
@@ -42,14 +51,36 @@ public class LevelSegment : MonoBehaviour
         }
     }
 
+    protected List<Vector2> calculateCameraBounds()
+    {
+        float leftX = transform.position.x + (segBoundary.offset.x - (segBoundary.size.x) / 2) + 5.5f;
+        float rightX = transform.position.x + (segBoundary.offset.x + (segBoundary.size.x) / 2) - 5.5f;
+        float upY = segBoundary.offset.y + (segBoundary.size.y) - 1;
+        float downY = segBoundary.offset.y - (segBoundary.size.y) + 1;
+
+        Vector2 upperLeft = new Vector2(leftX, upY);
+        Vector2 lowerRight = new Vector2(rightX, downY);
+        List<Vector2> vecList = new List<Vector2>();
+        vecList.Add(upperLeft);
+        vecList.Add(lowerRight);
+        return vecList;
+    }
+
     public List<LevelSegment> getNeighbors()
     {
         return myNeighbors;
     }
+
+    //Return list of corners as calculated above
+    public List<Vector2> getSegCorners()
+    {
+        return boundaryCorners;
+    }
+
     //Function called by GameManager to change colors of stuff
     public void toggleObjects(ColorSystem.Colors gmColor)
     {
-        Debug.Log("toggleObjects to " + gmColor);
+        //Debug.Log("toggleObjects to " + gmColor);
         foreach(ColoredObject colObj in segmentObjects)
         {
             if(colObj.GetColor() == ColorSystem.Colors.BLACK)

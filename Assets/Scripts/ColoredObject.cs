@@ -33,11 +33,6 @@ public class ColoredObject : MonoBehaviour
         //Awake2();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void ChangeColor(ColorSystem.Colors newColor)
     {
@@ -51,19 +46,25 @@ public class ColoredObject : MonoBehaviour
 
     public void MakeVisible()
     {
-        isVisible = true;
-        //Have to implement rest of logic here. What does it mean to be invisible? Outline shown? No collision?
-        thisCollider.enabled = true;
-        spriteRenderer.sprite = onSprite;
+        if (curColor != ColorSystem.Colors.BLACK)
+        {
+            isVisible = true;
+            //Have to implement rest of logic here. What does it mean to be invisible? Outline shown? No collision?
+            thisCollider.enabled = true;
+            spriteRenderer.sprite = onSprite;
+        }
     }
 
 
     public void MakeInvisible()
     {
-        isVisible = false;
-        //Same deal here
-        thisCollider.enabled = false;
-        spriteRenderer.sprite = offSprite;
+        if (curColor != ColorSystem.Colors.BLACK)
+        {
+            isVisible = false;
+            //Same deal here
+            thisCollider.enabled = false;
+            spriteRenderer.sprite = offSprite;
+        }
     }
     /*
     private PlayerControllerInput tempcontrols;
