@@ -20,13 +20,8 @@ public class CameraFollow : MonoBehaviour
         startPos = transform.position;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
-    void FixedUpdate()
+    void Update()
     {
         
         moveToPosition.z = transform.position.z;
@@ -81,7 +76,7 @@ public class CameraFollow : MonoBehaviour
 
 
                 
-            moveToPosition.y = targetTransform.position.y;
+            moveToPosition.y = targetTransform.position.y + .5f;
             step = followSpeed * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, moveToPosition, step);
         }
