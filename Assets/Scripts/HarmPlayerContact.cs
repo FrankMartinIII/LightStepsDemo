@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class HarmPlayerContact : MonoBehaviour
 {
+    public int amount;
     
-    public void OnCollisionExit2D(Collider2D collision)
+    public void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("Collided with player");
         PlayerController player = collision.gameObject.GetComponent<PlayerController>();
@@ -13,10 +14,13 @@ public class HarmPlayerContact : MonoBehaviour
         {
             Debug.Log("Collided with player");
             //Destroy(player.gameObject);
+            player.changePlayerHealth(-amount);
         }
     }
+    /*
     public void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Collided with player");
     }
+    */
 }

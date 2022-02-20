@@ -19,12 +19,42 @@ public class PlayerController : PhysicsObject
 
     //Upgrade stuff
     [SerializeField] bool hasDoubleJump = false;
-    
+
+
+    [SerializeField] int maxPlayerHealth = 100;
+    [SerializeField] int currPlayerHealth;
+    private bool isDead = false;
     
     protected void Awake()
     {
         controls = new PlayerControllerInput();
+        currPlayerHealth = maxPlayerHealth;
     }
+
+    public void changePlayerHealth(int amount)
+    {
+        currPlayerHealth = currPlayerHealth + amount;
+        if(currPlayerHealth <= 0)
+        {
+            isDead = true;
+            gameObject.SetActive(false);
+        }
+
+        if(currPlayerHealth >= maxPlayerHealth)
+        {
+            currPlayerHealth = maxPlayerHealth;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
     
     protected new void OnEnable() //add corresponding OnDisable
     {
