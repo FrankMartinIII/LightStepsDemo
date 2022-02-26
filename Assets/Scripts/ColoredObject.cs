@@ -66,6 +66,16 @@ public class ColoredObject : MonoBehaviour
             spriteRenderer.sprite = offSprite;
         }
     }
+
+    public bool GetCurrentVisibility()
+    {
+        return isVisible;
+    }
+
+    public bool GetCurrentDestructibility()
+    {
+        return isDestructible;
+    }
     /*
     private PlayerControllerInput tempcontrols;
     //TEMP CODE
