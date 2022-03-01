@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -80,6 +81,10 @@ public class GameManager : MonoBehaviour
         tempcontrols.PlayerControls.InputColorRotateForward.Enable();
         tempcontrols.PlayerControls.InputColorRotateBackward.performed += colorRotateBackward;
         tempcontrols.PlayerControls.InputColorRotateBackward.Enable();
+        tempcontrols.PlayerControls.Save.performed += SaveGame;
+        tempcontrols.PlayerControls.Save.Enable();
+        tempcontrols.PlayerControls.Load.performed += LoadGame;
+        tempcontrols.PlayerControls.Load.Enable();
     }
 
     private void colorRotateForward(InputAction.CallbackContext ctx)
@@ -118,4 +123,19 @@ public class GameManager : MonoBehaviour
             seg.toggleObjects(curColor);
         }
     }
+
+    private void SaveGame(InputAction.CallbackContext ctx)
+    {
+        ES3AutoSaveMgr.Current.Save();
+    }
+
+    private void LoadGame(InputAction.CallbackContext ctx)
+    {
+        Scene curScene = SceneManager.GetActiveScene();
+        string sceneName = curScene.name;
+        //SceneManager.LoadScene(sceneName);
+        ES3AutoSaveMgr.Current.Load();
+    }
+
+
 }

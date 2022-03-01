@@ -8,7 +8,7 @@ public class HarmPlayerContact : MonoBehaviour
     
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Collided with player");
+        //Debug.Log("Collided with player");
         PlayerController player = collision.gameObject.GetComponent<PlayerController>();
         if(player != null)
         {

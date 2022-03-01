@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 7194835161806732121}
   - component: {fileID: 7194835161806732127}
   - component: {fileID: 7194835161806732126}
+  - component: {fileID: -8094372487296055162}
   m_Layer: 0
   m_Name: doorclosed
   m_TagString: Untagged
@@ -191,6 +192,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.36, y: 0.9}
   m_EdgeRadius: 0
+--- !u!114 &-8094372487296055162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7194835161806732120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cfcc9ceea0bf419cb3bcaf548c2600d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saveLayer: 0
+  saveTag: 0
+  saveName: 0
+  saveHideFlags: 0
+  saveActive: 1
+  saveChildren: 0
+  componentsToSave: []
 --- !u!1 &7194835161861407798
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,6 +303,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7194835162532528556}
   - component: {fileID: 7194835162532528557}
+  - component: {fileID: -6608705228817521183}
+  - component: {fileID: -3173587830447407190}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -327,3 +349,58 @@ MonoBehaviour:
   sourcesNeededToOpen: 1
   startingStateIsLocked: 1
   isLocked: 0
+--- !u!114 &-6608705228817521183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7194835162532528559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baff8732cd3074ef88b34f9cc487846d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabId: 7202112442310366148
+  localRefs:
+    _Keys:
+    - {fileID: 7194835162532528559}
+    - {fileID: 7194835162532528556}
+    - {fileID: 7194835162532528557}
+    - {fileID: 11500000, guid: fd55141eadb0a11469077ce55508f575, type: 3}
+    - {fileID: 7194835161806732120}
+    - {fileID: 7194835161806732121}
+    - {fileID: 7194835161806732127}
+    - {fileID: 21300000, guid: 78711060635e5bd4b95b1fbb35d407da, type: 3}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 7194835161806732126}
+    - {fileID: -6608705228817521183}
+    - {fileID: 7194835161861407798}
+    - {fileID: 7194835161861407799}
+    - {fileID: 7194835161861407796}
+    - {fileID: 21300000, guid: 1e10be85ca254d944bc0b073d4d874c0, type: 3}
+    - {fileID: 7194835161407868049}
+    - {fileID: 7194835161407868054}
+    - {fileID: 7194835161407868055}
+    - {fileID: 21300000, guid: ee6b0185357c04b40b4476f09b70ea11, type: 3}
+    _Values: 410fd18858da325062a615badbb61830e05ee29aa2b0db04cf08590251074a6ca4d75deda9948e0c06149b9ee6e98e47b8023b9fab33f16fcc3247af7fcf01680e7ea04cecfa264c30296048b38614476a5f46abbd15e8283832472324c17435edcd539a7624cc4e29876f81d3a9bc44e100b9e077a9542488d1cd535f51f272f801cda9733b6b6f43b8f3f3d3743531e3ed6abcb16af35f
+--- !u!114 &-3173587830447407190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7194835162532528559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cfcc9ceea0bf419cb3bcaf548c2600d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saveLayer: 0
+  saveTag: 0
+  saveName: 0
+  saveHideFlags: 0
+  saveActive: 0
+  saveChildren: 0
+  componentsToSave:
+  - {fileID: 7194835162532528557}

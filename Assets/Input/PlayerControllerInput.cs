@@ -71,6 +71,24 @@ public partial class @PlayerControllerInput : IInputActionCollection2, IDisposab
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Save"",
+                    ""type"": ""Button"",
+                    ""id"": ""f73c3c1d-a5a0-4c95-8bae-64b9ce07c013"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Load"",
+                    ""type"": ""Button"",
+                    ""id"": ""0b3543b4-5c02-4d49-bbfe-8b4f9132ed1e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -172,6 +190,28 @@ public partial class @PlayerControllerInput : IInputActionCollection2, IDisposab
                     ""action"": ""InputColorRotateBackward"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7a3eb83f-5a18-4347-8334-d4d5106e251a"",
+                    ""path"": ""<Keyboard>/v"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Save"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a662a69d-ca80-4e1f-b025-32f8fe9d5185"",
+                    ""path"": ""<Keyboard>/b"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Load"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -185,6 +225,8 @@ public partial class @PlayerControllerInput : IInputActionCollection2, IDisposab
         m_PlayerControls_ChangeColor = m_PlayerControls.FindAction("ChangeColor", throwIfNotFound: true);
         m_PlayerControls_InputColorRotateForward = m_PlayerControls.FindAction("InputColorRotateForward", throwIfNotFound: true);
         m_PlayerControls_InputColorRotateBackward = m_PlayerControls.FindAction("InputColorRotateBackward", throwIfNotFound: true);
+        m_PlayerControls_Save = m_PlayerControls.FindAction("Save", throwIfNotFound: true);
+        m_PlayerControls_Load = m_PlayerControls.FindAction("Load", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -249,6 +291,8 @@ public partial class @PlayerControllerInput : IInputActionCollection2, IDisposab
     private readonly InputAction m_PlayerControls_ChangeColor;
     private readonly InputAction m_PlayerControls_InputColorRotateForward;
     private readonly InputAction m_PlayerControls_InputColorRotateBackward;
+    private readonly InputAction m_PlayerControls_Save;
+    private readonly InputAction m_PlayerControls_Load;
     public struct PlayerControlsActions
     {
         private @PlayerControllerInput m_Wrapper;
@@ -258,6 +302,8 @@ public partial class @PlayerControllerInput : IInputActionCollection2, IDisposab
         public InputAction @ChangeColor => m_Wrapper.m_PlayerControls_ChangeColor;
         public InputAction @InputColorRotateForward => m_Wrapper.m_PlayerControls_InputColorRotateForward;
         public InputAction @InputColorRotateBackward => m_Wrapper.m_PlayerControls_InputColorRotateBackward;
+        public InputAction @Save => m_Wrapper.m_PlayerControls_Save;
+        public InputAction @Load => m_Wrapper.m_PlayerControls_Load;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -282,6 +328,12 @@ public partial class @PlayerControllerInput : IInputActionCollection2, IDisposab
                 @InputColorRotateBackward.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnInputColorRotateBackward;
                 @InputColorRotateBackward.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnInputColorRotateBackward;
                 @InputColorRotateBackward.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnInputColorRotateBackward;
+                @Save.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSave;
+                @Save.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSave;
+                @Save.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSave;
+                @Load.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnLoad;
+                @Load.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnLoad;
+                @Load.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnLoad;
             }
             m_Wrapper.m_PlayerControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -301,6 +353,12 @@ public partial class @PlayerControllerInput : IInputActionCollection2, IDisposab
                 @InputColorRotateBackward.started += instance.OnInputColorRotateBackward;
                 @InputColorRotateBackward.performed += instance.OnInputColorRotateBackward;
                 @InputColorRotateBackward.canceled += instance.OnInputColorRotateBackward;
+                @Save.started += instance.OnSave;
+                @Save.performed += instance.OnSave;
+                @Save.canceled += instance.OnSave;
+                @Load.started += instance.OnLoad;
+                @Load.performed += instance.OnLoad;
+                @Load.canceled += instance.OnLoad;
             }
         }
     }
@@ -312,5 +370,7 @@ public partial class @PlayerControllerInput : IInputActionCollection2, IDisposab
         void OnChangeColor(InputAction.CallbackContext context);
         void OnInputColorRotateForward(InputAction.CallbackContext context);
         void OnInputColorRotateBackward(InputAction.CallbackContext context);
+        void OnSave(InputAction.CallbackContext context);
+        void OnLoad(InputAction.CallbackContext context);
     }
 }

@@ -88,6 +88,10 @@ public class LevelSegment : MonoBehaviour
         //Debug.Log("toggleObjects to " + gmColor);
         foreach(ColoredObject colObj in segmentObjects)
         {
+            if(colObj == null)
+            {
+                continue;
+            }
             if(colObj.GetColor() == ColorSystem.Colors.BLACK)
             {
                 //DO NOTHING
