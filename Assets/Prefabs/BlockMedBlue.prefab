@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3538318704417982773}
   - component: {fileID: 3538318704417982775}
   - component: {fileID: 3538318704417982768}
+  - component: {fileID: -9200879580671241277}
   m_Layer: 0
   m_Name: BlockMedBlue
   m_TagString: Untagged
@@ -126,6 +127,19 @@ MonoBehaviour:
   curColor: 2
   onSprite: {fileID: 21300000, guid: 35b78b9fb93f1b748a034286b48c1586, type: 3}
   offSprite: {fileID: 21300000, guid: 4f25b2eeaeb8383429250d0c41c46756, type: 3}
+--- !u!114 &-9200879580671241277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3538318704417982772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5baaf91c7d2e61e4b839743dce77ddda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAmount: 100
 --- !u!1 &4371397645172816560
 GameObject:
   m_ObjectHideFlags: 0

@@ -34,6 +34,7 @@ public class PlayerController : PhysicsObject
     public void changePlayerHealth(int amount)
     {
         currPlayerHealth = currPlayerHealth + amount;
+        Debug.Log("Player health modified by " + amount);
         if(currPlayerHealth <= 0)
         {
             isDead = true;
@@ -42,6 +43,7 @@ public class PlayerController : PhysicsObject
 
         if(currPlayerHealth >= maxPlayerHealth)
         {
+            Debug.Log("Player exceeded max health, setting current health to max");
             currPlayerHealth = maxPlayerHealth;
         }
     }

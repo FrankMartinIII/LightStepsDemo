@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PowerSource : ColoredObject
 {
-    [SerializeField] List<PowerableObject> linkedObjects;
+    [SerializeField] protected List<PowerableObject> linkedObjects;
     public bool isActive;
     // Start is called before the first frame update
     void Start()
@@ -15,12 +15,15 @@ public class PowerSource : ColoredObject
     // Update is called once per frame
     void Update()
     {
+
+        /*
         if (isActive)
         {
             foreach (PowerableObject o in linkedObjects)
             {
-                o.recievePower();
+                o.receivePower();
             }
         }
+        */
     }
 }

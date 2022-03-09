@@ -34,6 +34,10 @@ public class Door : PowerableObject
     void Start()
     {
         isLocked = startingStateIsLocked;
+        if(!isLocked)
+        {
+            closedDoor.SetActive(false);
+        }
     }
 
     // Update is called once per frame

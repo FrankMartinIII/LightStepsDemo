@@ -84,7 +84,12 @@ public class PhysicsObject : ColoredObject
 
             for(int i = 0; i < count; i++) //take raycast2d objects frim hitbuffer and copy into the list
             {
-                hitBufferList.Add(hitBuffer[i]);
+                PlatformEffector2D phaseThruPlat = hitBuffer[i].collider.GetComponent<PlatformEffector2D>();
+
+                if (!phaseThruPlat || (hitBuffer[i].normal == Vector2.up && velocity.y <= 0)) //If its not a phase thru platform or if the player is landing on it from above and the player is moving downward
+                {
+                    hitBufferList.Add(hitBuffer[i]);
+                }
             }
 
             for (int i = 0; i < hitBufferList.Count; i++)
