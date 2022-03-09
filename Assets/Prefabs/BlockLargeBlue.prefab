@@ -83,7 +83,7 @@ GameObject:
   - component: {fileID: 5322745341091369009}
   - component: {fileID: 5322745341091369011}
   - component: {fileID: 5322745341091369012}
-  - component: {fileID: -5737129104871096376}
+  - component: {fileID: 6962370337507598205}
   m_Layer: 0
   m_Name: BlockLargeBlue
   m_TagString: Untagged
@@ -198,7 +198,7 @@ MonoBehaviour:
   curColor: 2
   onSprite: {fileID: 21300000, guid: 07823007d2fc84248bd0fb1d7f66bb9d, type: 3}
   offSprite: {fileID: 21300000, guid: 1171cce3b393e4345828091e5203ece9, type: 3}
---- !u!114 &-5737129104871096376
+--- !u!114 &6962370337507598205
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -207,7 +207,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5322745341091369008}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6b97d16c09090e48870c06b0e20aefe, type: 3}
+  m_Script: {fileID: 11500000, guid: 5baaf91c7d2e61e4b839743dce77ddda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 0
+  damageAmount: 1000

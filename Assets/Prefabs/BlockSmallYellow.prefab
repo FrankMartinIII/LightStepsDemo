@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2643690601086185366}
   - component: {fileID: 2643690601086185364}
   - component: {fileID: 2643690601086185363}
+  - component: {fileID: 7175415266657831719}
   m_Layer: 0
   m_Name: BlockSmallYellow
   m_TagString: Untagged
@@ -126,6 +127,19 @@ MonoBehaviour:
   curColor: 3
   onSprite: {fileID: 21300000, guid: b211c1507ceaf6546ae0b7b46323c2b2, type: 3}
   offSprite: {fileID: 21300000, guid: cf2eaeee42930514f9c13574067b9fd8, type: 3}
+--- !u!114 &7175415266657831719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2643690601086185367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5baaf91c7d2e61e4b839743dce77ddda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAmount: 100
 --- !u!1 &6324132686734637070
 GameObject:
   m_ObjectHideFlags: 0
