@@ -22,25 +22,27 @@ public class KillBoxManager : MonoBehaviour
     {
 
         //Debug.Log("rec" + recentlyDamagedPlayer);
-        Debug.Log("dmg amount " + damageAmount);
+        //Debug.Log("dmg amount " + damageAmount);
         //Debug.Log("Collided with player");
         PlayerController player = collision.gameObject.GetComponent<PlayerController>();
         if (player != null && coloredObject.GetCurrentVisibility() && recentlyDamagedPlayer == false)
         {
             recentlyDamagedPlayer = true;
-            //StartCoroutine("playerDamageTimer");
-            Debug.Log("Damaged player");
+            StartCoroutine("playerDamageTimer");
+            //Debug.Log("Damaged player");
             //Destroy(player.gameObject);
             player.changePlayerHealth(-damageAmount);
         }
     }
 
-    
+
+
     IEnumerator playerDamageTimer()
     {
         
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(1f);
         recentlyDamagedPlayer = false;
+        //Debug.Log("Player can be damaged again");
     }
     
 }

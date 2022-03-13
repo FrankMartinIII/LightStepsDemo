@@ -70,7 +70,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5baaf91c7d2e61e4b839743dce77ddda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 1
+  damageStartAmount: 0
+  recentlyDamagedPlayer: 0
 --- !u!1 &2266656015313150690
 GameObject:
   m_ObjectHideFlags: 0
@@ -83,7 +84,6 @@ GameObject:
   - component: {fileID: 2266656015313150691}
   - component: {fileID: 2266656015313150689}
   - component: {fileID: 2266656015313150694}
-  - component: {fileID: 8667350342064598054}
   m_Layer: 0
   m_Name: BlockSmallRed
   m_TagString: Untagged
@@ -198,16 +198,3 @@ MonoBehaviour:
   curColor: 1
   onSprite: {fileID: 21300000, guid: 671e0fbffc7dcaa48b0283da19602f9b, type: 3}
   offSprite: {fileID: 21300000, guid: cb78c051c513a9642900c228cf1df3c5, type: 3}
---- !u!114 &8667350342064598054
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2266656015313150690}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5baaf91c7d2e61e4b839743dce77ddda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageAmount: 100
