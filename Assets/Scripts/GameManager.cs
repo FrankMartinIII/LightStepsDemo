@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,11 +15,14 @@ public class GameManager : MonoBehaviour
     private PlayerControllerInput tempcontrols;
 
     public CameraFollow pCam; //Player camera
+
+    protected TMP_Text centerTextBox;
     // Start is called before the first frame update
     void Start()
     {
         //changeCurrentSegment(currentSegment);
         pCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>(); //Find the Camera in the scene
+        centerTextBox = GameObject.FindGameObjectWithTag("CenterTextBoxTMP").GetComponent<TMP_Text>();
 
     }
 
@@ -40,6 +44,7 @@ public class GameManager : MonoBehaviour
         loadNeighbors(currentSegment);
         List<Vector2> bounds = currentSegment.getSegCorners(); //Set camera bounds to follow in the new segment
         pCam.changeCameraBounds(bounds[0], bounds[1]);
+        CreateSave();
 
     }
 
@@ -70,6 +75,33 @@ public class GameManager : MonoBehaviour
             Debug.Log(n.gameObject.name + " loaded");
         }
     }
+
+    public void playerDied()
+    {
+        if(centerTextBox != null)
+        {
+            centerTextBox.text = "SYSTEMS DAMAGED";
+        }
+
+        StartCoroutine("respawnOnTimer");
+
+    }
+
+    IEnumerator respawnOnTimer()
+    {
+        yield return new WaitForSeconds(3f);
+        centerTextBox.text = "";
+        if(ES3.FileExists("SaveFile.es3")) //Check if a save exists. If it does, load it.
+        {
+            Debug.Log("Save found");
+            ES3AutoSaveMgr.Current.Load();
+        }
+        else
+        {
+            Debug.LogError("NO PREVIOUS SAVE");
+        }
+    }
+
 
     
 
@@ -125,6 +157,11 @@ public class GameManager : MonoBehaviour
     }
 
     private void SaveGame(InputAction.CallbackContext ctx)
+    {
+        CreateSave();
+    }
+
+    private void CreateSave()
     {
         ES3AutoSaveMgr.Current.Save();
     }

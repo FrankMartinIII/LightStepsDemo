@@ -1706,7 +1706,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1910500448845959439, guid: 8b452e52f977d0c46ae4292e0069c548, type: 3}
       propertyPath: m_ColliderPaths.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1910500448845959439, guid: 8b452e52f977d0c46ae4292e0069c548, type: 3}
       propertyPath: m_CompositePaths.m_Paths.Array.size
@@ -1866,7 +1866,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1910500449376353261, guid: 8b452e52f977d0c46ae4292e0069c548, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1910500449376353262, guid: 8b452e52f977d0c46ae4292e0069c548, type: 3}
       propertyPath: m_RootOrder
@@ -2448,6 +2448,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7194835162532528556, guid: 3d06e05b4e9938e45ad50b102ddcce88, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7194835162532528557, guid: 3d06e05b4e9938e45ad50b102ddcce88, type: 3}
+      propertyPath: startingStateIsLocked
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7194835162532528559, guid: 3d06e05b4e9938e45ad50b102ddcce88, type: 3}

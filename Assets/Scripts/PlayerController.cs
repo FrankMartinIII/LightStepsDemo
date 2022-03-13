@@ -10,12 +10,14 @@ public class PlayerController : PhysicsObject
     public float maxSpeed = 7;
     public float jumpTakeOffSpeed = 7;
 
+
+
     private PlayerControllerInput controls;
 
 
     Vector2 p_move = Vector2.zero;
 
-
+    protected GameManager gm; //Reference to the GameManager in the scene
 
     //Upgrade stuff
     [SerializeField] bool hasDoubleJump = false;
@@ -29,6 +31,11 @@ public class PlayerController : PhysicsObject
     {
         controls = new PlayerControllerInput();
         currPlayerHealth = maxPlayerHealth;
+        gm = GameObject.FindObjectOfType<GameManager>(); 
+        if(gm == null)
+        {
+            Debug.LogError("Player cannot find GameManager. Make sure one is present in the scene.");
+        }
     }
 
     public void changePlayerHealth(int amount)
@@ -38,6 +45,7 @@ public class PlayerController : PhysicsObject
         if(currPlayerHealth <= 0)
         {
             isDead = true;
+            gm.playerDied();
             gameObject.SetActive(false);
         }
 
