@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2651664704440970125}
   - component: {fileID: 2651664704440970127}
   - component: {fileID: 2651664704440970120}
-  - component: {fileID: 8489208846321417202}
   m_Layer: 0
   m_Name: BlockSmallBlue
   m_TagString: Untagged
@@ -127,19 +126,6 @@ MonoBehaviour:
   curColor: 2
   onSprite: {fileID: 21300000, guid: dc196adbebb271445b9319f16949ceed, type: 3}
   offSprite: {fileID: 21300000, guid: b7d6c5700a94caf43a1502bb4925eb8c, type: 3}
---- !u!114 &8489208846321417202
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2651664704440970124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5baaf91c7d2e61e4b839743dce77ddda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageAmount: 100
 --- !u!1 &6555721539851779999
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,4 +196,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5baaf91c7d2e61e4b839743dce77ddda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 1
+  damageStartAmount: 0
+  recentlyDamagedPlayer: 0

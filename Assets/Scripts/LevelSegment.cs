@@ -21,7 +21,7 @@ public class LevelSegment : MonoBehaviour
     // Change this to some load function later, which will be called by game manager
     void Start()
     {
-        findColoredObjects();
+        findColoredObjects(transform);
         toggleObjects(gameManager.curColor); //On initial load of a segment, needs to set the correct color for itself (because this needs to happen after the LevelSegment is initialized
 
         segBoundary = GetComponent<BoxCollider2D>(); //Get this segment's collider
@@ -40,9 +40,9 @@ public class LevelSegment : MonoBehaviour
         
     }
 
-    protected void findColoredObjects()
+    protected void findColoredObjects(Transform t)
     {
-        foreach (Transform child in transform)
+        foreach (Transform child in t)
         {
             if (child.GetComponent<ColoredObject>() == null)
             {
