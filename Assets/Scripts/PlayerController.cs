@@ -46,7 +46,8 @@ public class PlayerController : PhysicsObject
         {
             isDead = true;
             gm.playerDied();
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
+            transform.parent.gameObject.SetActive(false);
         }
 
         if(currPlayerHealth >= maxPlayerHealth)

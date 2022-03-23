@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4907968343349706527}
   - component: {fileID: -6893393850679684168}
+  - component: {fileID: -3595174633845145351}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -60,6 +61,25 @@ MonoBehaviour:
     - {fileID: 4907968343675673776}
     - {fileID: 11500000, guid: af50a67fa3a274b4f88540b3055263c0, type: 3}
     _Values: 290b197fe839ac42e33b3b04b06934312cac410f189a2452433a690b1395031853af82be8b95fc5d48ff61e76306ca1c7a97a2f0a8e3d870e7c7c123a2b75578c2ac4eff19895969501ba9e803f34a3c8fb36d840ded903688f2d7c4d3d9ba01
+--- !u!114 &-3595174633845145351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4907968343349706526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cfcc9ceea0bf419cb3bcaf548c2600d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saveLayer: 0
+  saveTag: 0
+  saveName: 0
+  saveHideFlags: 0
+  saveActive: 1
+  saveChildren: 0
+  componentsToSave: []
 --- !u!1 &4907968343675673791
 GameObject:
   m_ObjectHideFlags: 0
