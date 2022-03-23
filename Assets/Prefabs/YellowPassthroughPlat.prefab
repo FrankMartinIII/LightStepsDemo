@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72249738e927641488e1805f0894e7f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curColor: 1
+  curColor: 3
   onSprite: {fileID: 21300000, guid: d68a79153136c364b9e72d9689531d58, type: 3}
   offSprite: {fileID: 21300000, guid: f57b62623e7b06f4c9ca301317aac654, type: 3}
 --- !u!251 &7152636715414522869
