@@ -14,6 +14,7 @@ public class KillBoxManager : MonoBehaviour
     {
         coloredObject = GetComponentInParent<ColoredObject>();
         damageAmount = 5000;
+        gameObject.layer = 2; //Set killboxes to "Ignore Raycast" to prevent them from intercepting grapple
     }
 
 

@@ -89,6 +89,15 @@ public partial class @PlayerControllerInput : IInputActionCollection2, IDisposab
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Grapple"",
+                    ""type"": ""Button"",
+                    ""id"": ""44e3e557-4013-4c79-b3dd-91b7ba3b3887"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -212,6 +221,17 @@ public partial class @PlayerControllerInput : IInputActionCollection2, IDisposab
                     ""action"": ""Load"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3fb25382-4ab4-4165-9e0d-a5e4b7cddfa5"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Grapple"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -227,6 +247,7 @@ public partial class @PlayerControllerInput : IInputActionCollection2, IDisposab
         m_PlayerControls_InputColorRotateBackward = m_PlayerControls.FindAction("InputColorRotateBackward", throwIfNotFound: true);
         m_PlayerControls_Save = m_PlayerControls.FindAction("Save", throwIfNotFound: true);
         m_PlayerControls_Load = m_PlayerControls.FindAction("Load", throwIfNotFound: true);
+        m_PlayerControls_Grapple = m_PlayerControls.FindAction("Grapple", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -293,6 +314,7 @@ public partial class @PlayerControllerInput : IInputActionCollection2, IDisposab
     private readonly InputAction m_PlayerControls_InputColorRotateBackward;
     private readonly InputAction m_PlayerControls_Save;
     private readonly InputAction m_PlayerControls_Load;
+    private readonly InputAction m_PlayerControls_Grapple;
     public struct PlayerControlsActions
     {
         private @PlayerControllerInput m_Wrapper;
@@ -304,6 +326,7 @@ public partial class @PlayerControllerInput : IInputActionCollection2, IDisposab
         public InputAction @InputColorRotateBackward => m_Wrapper.m_PlayerControls_InputColorRotateBackward;
         public InputAction @Save => m_Wrapper.m_PlayerControls_Save;
         public InputAction @Load => m_Wrapper.m_PlayerControls_Load;
+        public InputAction @Grapple => m_Wrapper.m_PlayerControls_Grapple;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -334,6 +357,9 @@ public partial class @PlayerControllerInput : IInputActionCollection2, IDisposab
                 @Load.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnLoad;
                 @Load.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnLoad;
                 @Load.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnLoad;
+                @Grapple.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnGrapple;
+                @Grapple.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnGrapple;
+                @Grapple.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnGrapple;
             }
             m_Wrapper.m_PlayerControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -359,6 +385,9 @@ public partial class @PlayerControllerInput : IInputActionCollection2, IDisposab
                 @Load.started += instance.OnLoad;
                 @Load.performed += instance.OnLoad;
                 @Load.canceled += instance.OnLoad;
+                @Grapple.started += instance.OnGrapple;
+                @Grapple.performed += instance.OnGrapple;
+                @Grapple.canceled += instance.OnGrapple;
             }
         }
     }
@@ -372,5 +401,6 @@ public partial class @PlayerControllerInput : IInputActionCollection2, IDisposab
         void OnInputColorRotateBackward(InputAction.CallbackContext context);
         void OnSave(InputAction.CallbackContext context);
         void OnLoad(InputAction.CallbackContext context);
+        void OnGrapple(InputAction.CallbackContext context);
     }
 }
