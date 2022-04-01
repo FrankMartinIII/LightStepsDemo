@@ -9,7 +9,8 @@ public class PlayerController : PhysicsObject
 
     public float maxSpeed = 7;
     public float jumpTakeOffSpeed = 7;
-
+    //animation
+    public Animator animator;
 
 
     private PlayerControllerInput controls;
@@ -94,8 +95,16 @@ public class PlayerController : PhysicsObject
         {
             velocity.y = jumpTakeOffSpeed;
             jumpsPerformed += 1;
+            //animate jump
+            StartCoroutine(AnimateJump());
         }
         
+    }
+    
+    private IEnumerator AnimateJump()
+    {
+        yield return new WaitForSeconds(0.01f);
+        animator.SetBool("Jumping", true);
     }
 
     private void HandleMove(InputAction.CallbackContext context)
@@ -112,10 +121,34 @@ public class PlayerController : PhysicsObject
         Vector2 move = Vector2.zero;
         //move.x = p_move.x;
 
-
-
         targetVelocity = p_move * maxSpeed;
         //p_move = Vector2.zero;
+
+        //animation
+        animator.SetFloat("Walking", Mathf.Abs(p_move.x) );
+        transform = gameObject.GetComponent<Transform>();
+        
+        if (p_move.x < 0)
+        {
+            //if moving in -x direction, face left
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+        else if (p_move.x > 0) 
+        {
+            //if moving in +x direction, face right
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+        else 
+        {
+            //if xvelocity = 0 then don't change current x orientation.
+        }
+        
+        if (isGrounded)
+        {
+            //when player is grounded.
+            animator.SetBool("Jumping", false);
+        }
+        
     }
     
 
