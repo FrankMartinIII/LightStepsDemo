@@ -92,7 +92,7 @@ public class PlayerController : PhysicsObject
     {
         Debug.Log("Jump pressed");
 
-        if(isGrounded == true || (hasDoubleJump && jumpsPerformed == 0)) //Check if jumping now is valid
+        if(isGrounded == true || (hasDoubleJump && jumpsPerformed == 1)) //Check if jumping now is valid
         {
             velocity.y = jumpTakeOffSpeed;
             jumpsPerformed += 1;
