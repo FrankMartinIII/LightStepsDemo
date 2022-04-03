@@ -59,7 +59,8 @@ MonoBehaviour:
     - {fileID: 4907968343675673778}
     - {fileID: 4907968343675673776}
     - {fileID: 11500000, guid: af50a67fa3a274b4f88540b3055263c0, type: 3}
-    _Values: 290b197fe839ac42e33b3b04b06934312cac410f189a2452433a690b1395031853af82be8b95fc5d48ff61e76306ca1c7a97a2f0a8e3d870e7c7c123a2b75578c2ac4eff19895969501ba9e803f34a3c8fb36d840ded903688f2d7c4d3d9ba01
+    - {fileID: 712904055729966363}
+    _Values: 1266e0ef3ed5ce5d21f89cb48c8ac834fe1fd792ebc5a530c59089f4da0ebb5c3c8d6f2cab92345b1269ebbba803f3758e90426a9791444c3e4f4b31a13dc813c4c00fe5050b206bec7c8181dae9883784fe826a5126f4554a236bfadd65fc4ea584f1b108d5a06b
 --- !u!1 &4907968343675673791
 GameObject:
   m_ObjectHideFlags: 0
@@ -74,6 +75,7 @@ GameObject:
   - component: {fileID: 4907968343675673778}
   - component: {fileID: 4907968343675673776}
   - component: {fileID: 1822922794230463030}
+  - component: {fileID: 712904055729966363}
   m_Layer: 0
   m_Name: PlayerStart
   m_TagString: Untagged
@@ -202,6 +204,7 @@ MonoBehaviour:
   gravityModifier: 1
   maxSpeed: 4
   jumpTakeOffSpeed: 4
+  animator: {fileID: 712904055729966363}
   hasDoubleJump: 0
   maxPlayerHealth: 100
   currPlayerHealth: 0
@@ -226,3 +229,22 @@ MonoBehaviour:
   componentsToSave:
   - {fileID: 4907968343675673788}
   - {fileID: 4907968343675673776}
+--- !u!95 &712904055729966363
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4907968343675673791}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ead07d49ecdea5043a84526e4682d6e4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
