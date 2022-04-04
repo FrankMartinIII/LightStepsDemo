@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2862289678164802017}
   - component: {fileID: 90335462916773832}
   - component: {fileID: 702926409604091386}
+  - component: {fileID: 3107273157732933134}
   m_Layer: 0
   m_Name: CrateRed
   m_TagString: Untagged
@@ -109,3 +110,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.24, y: 0.18}
   m_EdgeRadius: 0
+--- !u!114 &3107273157732933134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8720181055892486747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72249738e927641488e1805f0894e7f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curColor: 1
+  onSprite: {fileID: 21300000, guid: 1d443a3ed51221345a20608ab2a22ee6, type: 3}
+  offSprite: {fileID: 21300000, guid: 2975b7e8a066b3d43b72e9c21249ea8a, type: 3}
