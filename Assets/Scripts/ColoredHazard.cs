@@ -6,19 +6,23 @@ public class ColoredHazard : ColoredObject
 {
     public int damageAmount = 10;
     public float knockbackForce = 1.0f;
-    protected bool recentlyDamagedPlayer = false;
+    public bool recentlyDamagedPlayer = false;
+
+    public float damageTimer = 1f;
 
     public new void Start()
     {
         gameObject.layer = 2;
     }
-    public virtual void OnCollisionEnter2D(Collision2D collision)
+    public virtual void OnCollisionStay2D(Collision2D collision)
     {
         
         GameObject obj = collision.gameObject;
         PlayerController player = getPlayerController(obj);
-        if (player != null)
+        if (player != null && (recentlyDamagedPlayer == false))
         {
+            recentlyDamagedPlayer = true;
+            StartCoroutine(playerDamageTimer());
             player.changePlayerHealth(-damageAmount);
             //knockback(obj);
         }
@@ -54,11 +58,11 @@ public class ColoredHazard : ColoredObject
         }
     }
 
-    IEnumerator playerDamageTimer()
+    protected IEnumerator playerDamageTimer()
     {
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(damageTimer);
         recentlyDamagedPlayer = false;
-        //Debug.Log("Player can be damaged again");
+        Debug.Log("Player can be damaged again");
     }
 }
