@@ -17,13 +17,16 @@ public class GameManager : MonoBehaviour
     public CameraFollow pCam; //Player camera
 
     protected TMP_Text centerTextBox;
+    protected GameObject uiMap;
+    
     // Start is called before the first frame update
     void Start()
     {
         //changeCurrentSegment(currentSegment);
         pCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>(); //Find the Camera in the scene
         centerTextBox = GameObject.FindGameObjectWithTag("CenterTextBoxTMP").GetComponent<TMP_Text>();
-
+        uiMap = GameObject.FindObjectOfType<MiniMapManager>().gameObject;
+        uiMap.SetActive(false);
     }
 
     void Awake()
@@ -117,6 +120,8 @@ public class GameManager : MonoBehaviour
         tempcontrols.PlayerControls.Save.Enable();
         tempcontrols.PlayerControls.Load.performed += LoadGame;
         tempcontrols.PlayerControls.Load.Enable();
+        tempcontrols.PlayerControls.Map.performed += OpenCloseMap;
+        tempcontrols.PlayerControls.Map.Enable();
     }
 
     private void colorRotateForward(InputAction.CallbackContext ctx)
@@ -153,6 +158,18 @@ public class GameManager : MonoBehaviour
         foreach(LevelSegment seg in loadedNeighbors)
         {
             seg.toggleObjects(curColor);
+        }
+    }
+
+    private void OpenCloseMap(InputAction.CallbackContext ctx)
+    {
+        if(uiMap.activeSelf) //If map is active, toggle off
+        {
+            uiMap.SetActive(false);
+        }
+        else
+        {
+            uiMap.SetActive(true);
         }
     }
 
