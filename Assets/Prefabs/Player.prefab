@@ -60,10 +60,11 @@ MonoBehaviour:
     - {fileID: 4907968343675673778}
     - {fileID: 4907968343675673776}
     - {fileID: 11500000, guid: af50a67fa3a274b4f88540b3055263c0, type: 3}
-    - {fileID: 2124706541}
+    - {fileID: 0}
     - {fileID: 2124706540}
     - {fileID: 11500000, guid: 5f0026575f19f7149b2b3a38662cd80f, type: 3}
-    _Values: 290b197fe839ac42e33b3b04b06934312cac410f189a2452433a690b1395031853af82be8b95fc5d48ff61e76306ca1c7a97a2f0a8e3d870e7c7c123a2b75578c2ac4eff19895969501ba9e803f34a3c8fb36d840ded903688f2d7c4d3d9ba017b3773302fbbc971a488897d3df4f75d8ebf37f1590b0262
+    - {fileID: 2124706541}
+    _Values: e074d1181aaff06c60d7cb6e7050af0b5771a51f5594cc19cedfd83ef388c27d16d4651befaa4762b1419010173a9a44e0fc7d5af893944a5848b5c4284e8629eab1a663146ce4532b43d19625dd310786e3a109f4987b7ec0e58cc8a0f374634698da9a6cc9d04c1e2fcf4a3d01da3579bc3e45ad7c3452cad75cd020e44c1d
 --- !u!114 &-3595174633845145351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,8 +206,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.017566517, y: -0.00278306}
-  m_Size: {x: 0.35998294, y: 0.6455661}
+  m_Offset: {x: 0.0013923347, y: 0}
+  m_Size: {x: 0.38922304, y: 0.6455661}
   m_Direction: 0
 --- !u!114 &4907968343675673776
 MonoBehaviour:
@@ -228,7 +229,7 @@ MonoBehaviour:
   maxSpeed: 4
   jumpTakeOffSpeed: 4
   animator: {fileID: 2124706541}
-  hasDoubleJump: 0
+  hasDoubleJump: 1
   maxPlayerHealth: 100
   currPlayerHealth: 0
 --- !u!114 &1822922794230463030
