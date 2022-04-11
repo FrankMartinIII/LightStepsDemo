@@ -42,6 +42,7 @@ public class PlayerGrapple : MonoBehaviour
     {
         if ((hasGrapple) && (grappling == false) && (grapplingPull == false)) //Grapple can only occur if the player has the grapple upgrade and is not already grappling
         {
+            forceGrappleStop = false;
             Debug.DrawRay(transform.position, launchDirection, Color.red, 5); //Debug ray to show grapple
             int layermask = LayerMask.GetMask("Player", "Ignore Raycast"); //This layermask will make the raycast only hit the player
             layermask = ~layermask; //Invert the layermask to hit everything besides the player
@@ -133,7 +134,8 @@ public class PlayerGrapple : MonoBehaviour
     protected IEnumerator PullObj(GameObject otherObj, float speed)
     {
         Debug.Log("Moving object towards player");
-        StartCoroutine(PullSafetyTimer()); //This coroutine is to forcibly end the pull if the object cant reach the player after a certain amount of time.
+        StopCoroutine(PullSafetyTimer());
+        Coroutine lastRoutine = StartCoroutine(PullSafetyTimer()); //This coroutine is to forcibly end the pull if the object cant reach the player after a certain amount of time.
         while (Vector2.Distance(otherObj.transform.position, this.transform.position) > (speed * Time.deltaTime))
         {
             if (forceGrappleStop)
@@ -145,16 +147,17 @@ public class PlayerGrapple : MonoBehaviour
             otherObj.transform.position = Vector2.MoveTowards(otherObj.transform.position, this.transform.position, speed * Time.deltaTime);
             yield return 0;
         }
-
+        StopCoroutine(lastRoutine); //Stop the timer coroutine so that we cant accidentally stop the next pull action.
         grapplingPull = false;
         forceGrappleStop = false;
         hitObj = null;
-        StopCoroutine(PullSafetyTimer()); //Stop the timer coroutine so that we cant accidentally stop the next pull action.
+
     }
     
     protected IEnumerator PullSafetyTimer()
     {
         yield return new WaitForSeconds(abortPullTimer);
+        Debug.Log("PullSafetyTimer triggered");
         forceGrappleStop = true;
     }
 
