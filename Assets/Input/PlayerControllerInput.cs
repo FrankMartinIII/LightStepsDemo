@@ -98,6 +98,15 @@ public partial class @PlayerControllerInput : IInputActionCollection2, IDisposab
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Map"",
+                    ""type"": ""Button"",
+                    ""id"": ""a40cacc6-c276-414c-897f-4e49fed24980"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -232,6 +241,17 @@ public partial class @PlayerControllerInput : IInputActionCollection2, IDisposab
                     ""action"": ""Grapple"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""62c0ae9e-62a2-4d71-9613-56aa15686a96"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Map"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -248,6 +268,7 @@ public partial class @PlayerControllerInput : IInputActionCollection2, IDisposab
         m_PlayerControls_Save = m_PlayerControls.FindAction("Save", throwIfNotFound: true);
         m_PlayerControls_Load = m_PlayerControls.FindAction("Load", throwIfNotFound: true);
         m_PlayerControls_Grapple = m_PlayerControls.FindAction("Grapple", throwIfNotFound: true);
+        m_PlayerControls_Map = m_PlayerControls.FindAction("Map", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -315,6 +336,7 @@ public partial class @PlayerControllerInput : IInputActionCollection2, IDisposab
     private readonly InputAction m_PlayerControls_Save;
     private readonly InputAction m_PlayerControls_Load;
     private readonly InputAction m_PlayerControls_Grapple;
+    private readonly InputAction m_PlayerControls_Map;
     public struct PlayerControlsActions
     {
         private @PlayerControllerInput m_Wrapper;
@@ -327,6 +349,7 @@ public partial class @PlayerControllerInput : IInputActionCollection2, IDisposab
         public InputAction @Save => m_Wrapper.m_PlayerControls_Save;
         public InputAction @Load => m_Wrapper.m_PlayerControls_Load;
         public InputAction @Grapple => m_Wrapper.m_PlayerControls_Grapple;
+        public InputAction @Map => m_Wrapper.m_PlayerControls_Map;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -360,6 +383,9 @@ public partial class @PlayerControllerInput : IInputActionCollection2, IDisposab
                 @Grapple.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnGrapple;
                 @Grapple.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnGrapple;
                 @Grapple.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnGrapple;
+                @Map.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMap;
+                @Map.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMap;
+                @Map.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMap;
             }
             m_Wrapper.m_PlayerControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -388,6 +414,9 @@ public partial class @PlayerControllerInput : IInputActionCollection2, IDisposab
                 @Grapple.started += instance.OnGrapple;
                 @Grapple.performed += instance.OnGrapple;
                 @Grapple.canceled += instance.OnGrapple;
+                @Map.started += instance.OnMap;
+                @Map.performed += instance.OnMap;
+                @Map.canceled += instance.OnMap;
             }
         }
     }
@@ -402,5 +431,6 @@ public partial class @PlayerControllerInput : IInputActionCollection2, IDisposab
         void OnSave(InputAction.CallbackContext context);
         void OnLoad(InputAction.CallbackContext context);
         void OnGrapple(InputAction.CallbackContext context);
+        void OnMap(InputAction.CallbackContext context);
     }
 }
