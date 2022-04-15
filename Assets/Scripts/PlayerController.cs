@@ -21,7 +21,7 @@ public class PlayerController : PhysicsObject
     protected GameManager gm; //Reference to the GameManager in the scene
 
     //Upgrade stuff
-    [SerializeField] bool hasDoubleJump = false;
+    [SerializeField] public bool hasDoubleJump = false;
 
 
     [SerializeField] int maxPlayerHealth = 100;

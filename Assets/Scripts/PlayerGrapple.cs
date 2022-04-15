@@ -7,7 +7,7 @@ using UnityEngine.Tilemaps;
 
 public class PlayerGrapple : MonoBehaviour
 {
-    [SerializeField] protected bool hasGrapple; //Whether the player has the ability to grapple or not, can use this for the upgrade
+    [SerializeField] public bool hasGrapple; //Whether the player has the ability to grapple or not, can use this for the upgrade
     [SerializeField] int launchDistance = 100000; //Length of grappling hook
     [SerializeField] float grappleSpeed = 1f;
     [SerializeField] float pullSpeed = 3f;
