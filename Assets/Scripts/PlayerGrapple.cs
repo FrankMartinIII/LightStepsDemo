@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Tilemaps;
 
 public class PlayerGrapple : MonoBehaviour
 {
@@ -78,6 +79,10 @@ public class PlayerGrapple : MonoBehaviour
             GameObject other = collision.gameObject;
             Debug.Log("Player collided with something");
 
+            if(other.GetComponent<TilemapCollider2D>() != null)
+            {
+                return;
+            }
             forceGrappleStop = true;
 
         }
