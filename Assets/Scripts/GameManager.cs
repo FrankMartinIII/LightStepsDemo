@@ -18,7 +18,9 @@ public class GameManager : MonoBehaviour
 
     protected TMP_Text centerTextBox;
     protected GameObject uiMap;
-    
+
+
+    public bool loadGameOnStart = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,13 +33,30 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        
+        InitializerScript init = null;
+        if (GameObject.FindGameObjectWithTag("Initializer") != null)
+        {
+            init = GameObject.FindGameObjectWithTag("Initializer").GetComponent<InitializerScript>();
+        }
+        if(init != null)
+        {
+            loadGameOnStart = init.loadGame; //Find the initializer and if it is telling us to load a game, we will set our flag to load the save
+            //GameObject player = GameObject.FindGameObjectWithTag("Player");
+            Destroy(init.gameObject); //Uncomment this line after testing
+        }
+        
         tempcontrols = new PlayerControllerInput();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(loadGameOnStart)
+        {
+            loadGameOnStart = false;
+            LoadSave();
+        }
     }
 
     public void changeCurrentSegment(LevelSegment newSeg)
@@ -47,7 +66,10 @@ public class GameManager : MonoBehaviour
         loadNeighbors(currentSegment);
         List<Vector2> bounds = currentSegment.getSegCorners(); //Set camera bounds to follow in the new segment
         pCam.changeCameraBounds(bounds[0], bounds[1]);
-        CreateSave();
+        if (loadGameOnStart == false)
+        {
+            CreateSave();
+        }
 
     }
 
@@ -180,6 +202,7 @@ public class GameManager : MonoBehaviour
 
     private void CreateSave()
     {
+        Debug.Log("saving");
         ES3AutoSaveMgr.Current.Save();
     }
 
@@ -188,6 +211,13 @@ public class GameManager : MonoBehaviour
         Scene curScene = SceneManager.GetActiveScene();
         string sceneName = curScene.name;
         //SceneManager.LoadScene(sceneName);
+        LoadSave();
+    }
+
+
+    private void LoadSave()
+    {
+        Debug.Log("reloading previous save");
         ES3AutoSaveMgr.Current.Load();
     }
 
