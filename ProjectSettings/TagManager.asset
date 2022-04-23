@@ -7,6 +7,7 @@ TagManager:
   - CenterTextBoxTMP
   - GrapplePoint
   - Crate
+  - Initializer
   layers:
   - Default
   - TransparentFX
