@@ -14,7 +14,7 @@ public class PlayerController : PhysicsObject
 
 
     private PlayerControllerInput controls;
-
+    private PlayerGrapple grappleScript;
 
     Vector2 p_move = Vector2.zero;
 
@@ -26,10 +26,11 @@ public class PlayerController : PhysicsObject
 
     [SerializeField] int maxPlayerHealth = 100;
     [SerializeField] int currPlayerHealth;
-    private bool isDead = false;
+    bool isDead = false;
     
     protected void Awake()
     {
+        grappleScript = gameObject.GetComponent<PlayerGrapple>();
         controls = new PlayerControllerInput();
         currPlayerHealth = maxPlayerHealth;
         gm = GameObject.FindObjectOfType<GameManager>(); 
@@ -48,6 +49,7 @@ public class PlayerController : PhysicsObject
             isDead = true;
             gm.playerDied();
             //gameObject.SetActive(false);
+            grappleScript.Reset();
             transform.parent.gameObject.SetActive(false);
         }
 
@@ -150,6 +152,11 @@ public class PlayerController : PhysicsObject
             animator.SetBool("Jumping", false);
         }
         
+    }
+
+    public bool GetDeathStatus()
+    {
+        return isDead;
     }
     
 

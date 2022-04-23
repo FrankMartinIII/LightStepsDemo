@@ -12,6 +12,8 @@ public class PlayerGrapple : MonoBehaviour
     [SerializeField] float grappleSpeed = 1f;
     [SerializeField] float pullSpeed = 3f;
     [SerializeField] float abortPullTimer = 2f; //How long an object will be pulled towards the player on successful grapple until it gives up (should stop objects from getting stuck)
+    [SerializeField] LineRenderer lr;
+    private PlayerController playerController;
 
     Vector2 launchDirection;
 
@@ -28,6 +30,7 @@ public class PlayerGrapple : MonoBehaviour
     {
         controls = new PlayerControllerInput();
         rb = gameObject.GetComponent<Rigidbody2D>();
+        playerController = gameObject.GetComponent<PlayerController>();
     }
 
     protected void OnEnable() //add corresponding OnDisable
@@ -38,6 +41,7 @@ public class PlayerGrapple : MonoBehaviour
         controls.PlayerControls.Move.Enable();
         controls.PlayerControls.Grapple.Enable();
     }
+
 
     protected void LaunchGrapple(InputAction.CallbackContext ctx)
     {
@@ -119,6 +123,8 @@ public class PlayerGrapple : MonoBehaviour
         Debug.Log("Moving player towards point");
         while(Vector2.Distance(this.transform.position, end) > (speed * Time.deltaTime))
         {
+            lr.SetPosition(0, end);
+            lr.SetPosition(1, this.transform.position);
             if(forceGrappleStop)
             {
                 yield return 0;
@@ -128,6 +134,7 @@ public class PlayerGrapple : MonoBehaviour
             this.transform.position = Vector2.MoveTowards(this.transform.position, end, speed * Time.deltaTime); //Move the player towards the point
             yield return 0;
         }
+        lr.SetPosition(1, lr.GetPosition(0));
         grappling = false;
         forceGrappleStop = false;
         hitObj = null;
@@ -143,6 +150,8 @@ public class PlayerGrapple : MonoBehaviour
         Coroutine lastRoutine = StartCoroutine(PullSafetyTimer()); //This coroutine is to forcibly end the pull if the object cant reach the player after a certain amount of time.
         while (Vector2.Distance(otherObj.transform.position, this.transform.position) > (speed * Time.deltaTime))
         {
+            lr.SetPosition(0, this.transform.position);
+            lr.SetPosition(1, otherObj.transform.position);
             if (forceGrappleStop)
             {
                 yield return 0;
@@ -153,6 +162,7 @@ public class PlayerGrapple : MonoBehaviour
             yield return 0;
         }
         StopCoroutine(lastRoutine); //Stop the timer coroutine so that we cant accidentally stop the next pull action.
+        lr.SetPosition(0, lr.GetPosition(1));
         grapplingPull = false;
         forceGrappleStop = false;
         hitObj = null;
@@ -164,6 +174,32 @@ public class PlayerGrapple : MonoBehaviour
         yield return new WaitForSeconds(abortPullTimer);
         Debug.Log("PullSafetyTimer triggered");
         forceGrappleStop = true;
+    }
+
+    public void Reset()
+    {
+        grappling = false;
+        grapplingPull = false;
+        lr.SetPosition(0, lr.GetPosition(1));
+    }
+
+
+
+    IEnumerator LineDraw()
+    {
+        float t = 0;
+        float time = 2;
+        Vector3 orig = lr.GetPosition(0);
+        Vector3 orig2 = lr.GetPosition(1);
+        lr.SetPosition(1, orig);
+        Vector3 newpos;
+        for (; t < time; t += Time.deltaTime)
+        {
+            newpos = Vector3.Lerp(orig, orig2, t / time);
+            lr.SetPosition(1, newpos);
+            yield return null;
+        }
+        lr.SetPosition(1, orig2);
     }
 
 }
