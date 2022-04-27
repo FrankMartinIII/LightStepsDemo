@@ -8,6 +8,7 @@ TagManager:
   - GrapplePoint
   - Crate
   - Initializer
+  - GameManager
   layers:
   - Default
   - TransparentFX
