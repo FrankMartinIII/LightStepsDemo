@@ -142,7 +142,7 @@ public class GameManager : MonoBehaviour
         tempcontrols.PlayerControls.Save.Enable();
         tempcontrols.PlayerControls.Load.performed += LoadGame;
         tempcontrols.PlayerControls.Load.Enable();
-        tempcontrols.PlayerControls.Map.performed += OpenCloseMap;
+        tempcontrols.PlayerControls.Map.performed += HandleMap;
         tempcontrols.PlayerControls.Map.Enable();
     }
 
@@ -183,9 +183,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void OpenCloseMap(InputAction.CallbackContext ctx)
+    private void HandleMap(InputAction.CallbackContext ctx)
     {
-        if(uiMap.activeSelf) //If map is active, toggle off
+        OpenCloseMap();
+    }
+
+    public void OpenCloseMap()
+    {
+        if (uiMap.activeSelf) //If map is active, toggle off
         {
             uiMap.SetActive(false);
         }
@@ -200,7 +205,7 @@ public class GameManager : MonoBehaviour
         CreateSave();
     }
 
-    private void CreateSave()
+    public static void CreateSave()
     {
         Debug.Log("saving");
         ES3AutoSaveMgr.Current.Save();
