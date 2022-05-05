@@ -14,6 +14,7 @@ public class ChangeColorUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = FindObjectOfType<GameManager>();
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
