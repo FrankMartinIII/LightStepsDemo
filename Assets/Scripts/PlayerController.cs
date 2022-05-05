@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : PhysicsObject
 {
-
+    private HealthBar healthBar;
     public float maxSpeed = 7;
     public float jumpTakeOffSpeed = 7;
     //animation
@@ -40,10 +40,25 @@ public class PlayerController : PhysicsObject
         }
     }
 
+    protected new void Start()
+    {
+        base.Start();
+        healthBar = FindObjectOfType<HealthBar>();
+        if(healthBar == null)
+        {
+            Debug.LogError("Player cannot find HealthBar. Make sure one is present in the scene.");
+        }
+        else
+        {
+            healthBar.SetSize(currPlayerHealth / maxPlayerHealth);
+        }
+    }
+
     public void changePlayerHealth(int amount)
     {
         currPlayerHealth = currPlayerHealth + amount;
         Debug.Log("Player health modified by " + amount);
+        
         if(currPlayerHealth <= 0)
         {
             isDead = true;
@@ -57,6 +72,11 @@ public class PlayerController : PhysicsObject
         {
             Debug.Log("Player exceeded max health, setting current health to max");
             currPlayerHealth = maxPlayerHealth;
+        }
+
+        if (healthBar != null)
+        {
+            healthBar.SetSize((float)currPlayerHealth / maxPlayerHealth);
         }
     }
 
@@ -92,7 +112,7 @@ public class PlayerController : PhysicsObject
 
     private void HandleJump(InputAction.CallbackContext obj)
     {
-        Debug.Log("Jump pressed");
+        //Debug.Log("Jump pressed");
 
         if(isGrounded == true || (hasDoubleJump && jumpsPerformed == 1)) //Check if jumping now is valid
         {
@@ -157,6 +177,16 @@ public class PlayerController : PhysicsObject
     public bool GetDeathStatus()
     {
         return isDead;
+    }
+
+    public void CalledOnReloadRespawn() //Called from GameManager when a save is reloaded.
+    {
+        //Debug.Log("Called on res");
+        currPlayerHealth = maxPlayerHealth;
+        if (healthBar != null)
+        {
+            healthBar.SetSize((float)currPlayerHealth / maxPlayerHealth);
+        }
     }
     
 
