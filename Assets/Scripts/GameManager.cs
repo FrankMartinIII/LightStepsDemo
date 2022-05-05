@@ -19,12 +19,13 @@ public class GameManager : MonoBehaviour
     protected TMP_Text centerTextBox;
     protected GameObject uiMap;
 
-
+    private PlayerController player;
     public bool loadGameOnStart = false;
     // Start is called before the first frame update
     void Start()
     {
         //changeCurrentSegment(currentSegment);
+        player = FindObjectOfType<PlayerController>();
         pCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>(); //Find the Camera in the scene
         centerTextBox = GameObject.FindGameObjectWithTag("CenterTextBoxTMP").GetComponent<TMP_Text>();
         uiMap = GameObject.FindObjectOfType<MiniMapManager>().gameObject;
@@ -119,7 +120,8 @@ public class GameManager : MonoBehaviour
         if(ES3.FileExists("SaveFile.es3")) //Check if a save exists. If it does, load it.
         {
             Debug.Log("Save found");
-            ES3AutoSaveMgr.Current.Load();
+            //ES3AutoSaveMgr.Current.Load();
+            LoadSave();
         }
         else
         {
@@ -224,6 +226,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("reloading previous save");
         ES3AutoSaveMgr.Current.Load();
+        player.CalledOnReloadRespawn();
     }
 
 
