@@ -127,3 +127,5 @@ MonoBehaviour:
   offSprite: {fileID: 21300000, guid: 00e93907f61fb0c4da7d7ed2c21ae8f4, type: 3}
   damageAmount: 10
   knockbackForce: 1
+  recentlyDamagedPlayer: 0
+  damageTimer: 0.5

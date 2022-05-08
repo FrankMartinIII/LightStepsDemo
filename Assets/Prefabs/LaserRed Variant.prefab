@@ -19,6 +19,10 @@ PrefabInstance:
       propertyPath: offSprite
       value: 
       objectReference: {fileID: 21300000, guid: 9ffad6524f9cfc84d8426e32b4968e28, type: 3}
+    - target: {fileID: 3219060219156954048, guid: eb2e4e4334d28cf4e897ff26e8f5f43c, type: 3}
+      propertyPath: damageTimer
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3219060219156954050, guid: eb2e4e4334d28cf4e897ff26e8f5f43c, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -69,7 +73,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 371b5f3e2d4745e4e813e845f5aa8825, type: 3}
     - target: {fileID: 3219060219156954077, guid: eb2e4e4334d28cf4e897ff26e8f5f43c, type: 3}
       propertyPath: m_Name
-      value: LaserRed
+      value: LaserRed Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb2e4e4334d28cf4e897ff26e8f5f43c, type: 3}
