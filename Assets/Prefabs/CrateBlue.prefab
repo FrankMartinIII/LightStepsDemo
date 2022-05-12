@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 2527509589448951289}
   - component: {fileID: 1771805229926991854}
   - component: {fileID: 2012471488626120104}
-  - component: {fileID: -5072945918484752595}
+  - component: {fileID: 1564855768347774808}
+  - component: {fileID: 4736126544986901764}
   m_Layer: 0
   m_Name: CrateBlue
-  m_TagString: Untagged
+  m_TagString: Crate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,7 +111,28 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.24, y: 0.18}
   m_EdgeRadius: 0
---- !u!114 &-5072945918484752595
+--- !u!50 &1564855768347774808
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3012670917511447893}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!114 &4736126544986901764
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,7 +141,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3012670917511447893}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72249738e927641488e1805f0894e7f9, type: 3}
+  m_Script: {fileID: 11500000, guid: 74f91d18fcb91d9499fcdc7f680adcd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   curColor: 2
