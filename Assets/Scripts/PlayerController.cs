@@ -15,6 +15,7 @@ public class PlayerController : PhysicsObject
 
     private PlayerControllerInput controls;
     private PlayerGrapple grappleScript;
+    //private PlayerCrates crates;
 
     Vector2 p_move = Vector2.zero;
 
