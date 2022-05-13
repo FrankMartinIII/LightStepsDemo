@@ -22,7 +22,7 @@ public class GrabController : MonoBehaviour
         RaycastHit2D grabCheck = Physics2D.Raycast(grabDetect.position, Vector2.right * transform.localScale, rayDist);
         
 
-        if (grabCheck.collider != null && grabCheck.collider.tag == "Crate") //if the object is a crate
+        if (grabCheck.collider.tag == "Crate" && grabCheck.collider != null) //if the object is a crate
         {
             GameObject crate = grabCheck.collider.gameObject; //easier reference. note it is NOT of crate class
             
